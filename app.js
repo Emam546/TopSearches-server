@@ -2,14 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-
+const cors=require("cors")
 var indexRouter = require('./routes/index');
 
 var app = express();
 
 
 
-
+app.use(cors({origin:"*"}))
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
