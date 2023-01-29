@@ -4,7 +4,7 @@ const googleTrends = require('google-trends-api');
 const cache=require("../middleWar/cache")
 /* GET home page. */
 router.use(cache())
-router.get('/trends/:id', async function(req, res, next) {
+router.get('/:id', async function(req, res, next) {
   const id=req.params.id || "US"
   googleTrends.realTimeTrends({geo:id.toUpperCase()})
   .then(function(results){
@@ -19,7 +19,7 @@ router.get('/trends/:id', async function(req, res, next) {
     next()
   });
 });
-router.get('/trends', async function(req, res, next) {
+router.get('/', async function(req, res, next) {
   googleTrends.realTimeTrends({geo:"US"})
   .then(function(results){
     try{
